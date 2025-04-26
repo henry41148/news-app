@@ -5,7 +5,8 @@ import os
 NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 print("NEWS_API_KEY:", NEWS_API_KEY)
 
-if not NEWS_API_KEY:
+if not NEWS_API_KEY or NEWS_API_KEY == None:
+    print("No API key")
     raise RuntimeError("NEWS_API_KEY is not set in environment variables!")
 
 
