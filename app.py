@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import requests
-from config import NEWS_API_KEY
+import os
+
+NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 
 app = Flask(__name__)
 
@@ -21,4 +23,4 @@ def index():
     return render_template('index.html', articles=filtered_articles, query=query)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=os.getenv('PORT', 5000))
